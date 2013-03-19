@@ -133,7 +133,7 @@ module.exports = (BasePlugin) ->
             }]
 
         writeAfter: (collection)->
-            if (not @config.onlyIfProduction) or (process.env.NODE_ENV is "production")
+            if (not @config.onlyIfProduction) or (if "production" in @docpad.getEnvironments())
               if @config.configFromEnv
                   console.log "Sunny plugin getting config from environment..."
                   handleEnv @docpad, @config
